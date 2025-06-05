@@ -1,0 +1,59 @@
+### Get all plants
+GET https://localhost:3000/api/plants
+
+### Get plant statistics
+GET https://localhost:3000/api/plants/stats
+
+### Get a specific plant by ID
+GET https://localhost:3000/api/plants/1
+
+### Create a new plant
+POST https://localhost:3000/api/plants
+Content-Type: application/json
+
+{
+    "name": "Rózsa",
+    "species": "Virág",
+    "water_interval_days": 7
+}
+
+### Update an existing plant
+PATCH https://localhost:3000/api/plants/1
+Content-Type: application/json
+
+{
+    "name": "Rózsa",
+    "species": "NemVirág",
+    "water_interval_days": 14
+}
+
+### Delete a plant
+DELETE https://localhost:3000/api/plants/1
+
+### Get watering logs for a specific plant
+GET https://localhost:3000/api/plants/1/waterings
+
+### Create a new watering log
+POST https://localhost:3000/api/waterings
+Content-Type: application/json
+
+{
+    "plant_id": 1,
+    "date": "2024.06.05",
+    "amount_ml": 250,
+    "notes": "Regular watering"
+}
+
+### Delete a watering log
+DELETE https://localhost:3000/api/waterings/1
+
+### Test invalid requests - Missing fields in plant creation
+POST https://localhost:3000/api/plants
+Content-Type: application/json
+
+{
+    "name": "Invalid Plant"
+}
+
+### Test invalid requests - Get non-existent plant
+GET https://localhost:3000/api/plants/999
